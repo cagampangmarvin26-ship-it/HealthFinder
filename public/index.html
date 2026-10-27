@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b2545">
+  <meta name="description" content="Find healthcare facilities, services, fees, free healthcare offers, and barangay health programs in Davao del Sur.">
+  <title>Health Finder — Community Healthcare, Made Easier</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#home" aria-label="Health Finder home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M16 5h8v11h11v8H24v11h-8V24H5v-8h11z" fill="currentColor"/></svg></span>
+        <span><strong>Health Finder</strong><small>Community care, closer</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <nav id="navLinks" class="nav-links" aria-label="Main navigation">
+        <a href="#home" class="active">Home</a><a href="#find">Find care</a><a href="#services">Services</a><a href="#programs">Health programs</a><a href="#about">About</a>
+        <button class="lang-toggle" id="languageBtn" type="button" aria-label="Switch language">Filipino</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-glow glow-a"></div><div class="hero-glow glow-b"></div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span><span data-i18n="eyebrow">COMMUNITY HEALTHCARE DIRECTORY</span></div>
+          <h1 data-i18n="heroTitle">The care you need.<br><em>Closer to home.</em></h1>
+          <p class="hero-lede" data-i18n="heroDesc">Find nearby hospitals, clinics, health services, and community programs — all in one place.</p>
+          <form class="hero-search" id="searchForm">
+            <span class="search-symbol" aria-hidden="true">⌕</span>
+            <label class="visually-hidden" for="searchInput">Search healthcare</label>
+            <input id="searchInput" type="search" placeholder="Try Digos, barangay, hospital..." autocomplete="off">
+            <button type="submit" class="btn btn-primary"><span data-i18n="searchButton">Find care</span><span aria-hidden="true"> →</span></button>
+          </form>
+          <div class="hero-note"><span aria-hidden="true">✓</span> Easy to use on mobile <span class="note-sep">•</span> <span>Local healthcare information</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Healthcare illustration">
+          <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+          <div class="visual-card main-visual-card">
+            <div class="medical-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M26 7h12v19h19v12H38v19H26V38H7V26h19z" fill="currentColor"/></svg></div>
+            <div class="visual-card-title">Care starts here</div><div class="visual-card-sub">Find the right service for you</div>
+            <div class="visual-pills"><span>Clinics</span><span>Hospitals</span><span>Community</span></div>
+          </div>
+          <div class="floating-chip chip-free"><span class="chip-icon">♡</span><span><b>Free care</b><small>Offers & programs</small></span></div>
+          <div class="floating-chip chip-near"><span class="pin-icon">⌖</span><span><b>Find nearby</b><small>Local facilities</small></span></div>
+          <div class="visual-spark spark-one">✦</div><div class="visual-spark spark-two">✧</div>
+        </div>
+      </div>
+      <div class="hero-bottom"><span>01 / YOUR COMMUNITY HEALTH GUIDE</span><span class="hero-line"></span><span>DAVAO DEL SUR · PHILIPPINES</span></div>
+    </section>
+
+    <section class="trust-strip" aria-label="Website features">
+      <div><span class="trust-icon">⌖</span><span><b>Find facilities</b><small>Hospitals, clinics & RHUs</small></span></div>
+      <div><span class="trust-icon">＋</span><span><b>Check services</b><small>Availability & schedules</small></span></div>
+      <div><span class="trust-icon">₱</span><span><b>Plan ahead</b><small>Fees & free services</small></span></div>
+      <div><span class="trust-icon">♡</span><span><b>Community care</b><small>Programs near you</small></span></div>
+    </section>
+
+    <section class="section find-section" id="find">
+      <div class="section-heading split-heading">
+        <div><p class="section-kicker">FIND HEALTHCARE</p><h2 data-i18n="findTitle">Let's find the right care.</h2></div>
+        <p>Search by municipality, barangay, facility name, or doctor type. Always confirm current availability directly with the facility.</p>
+      </div>
+      <div class="search-layout">
+        <aside class="filter-panel">
+          <div class="filter-title"><span class="filter-icon">☷</span><div><h3>Refine results</h3><p>Choose what you need</p></div></div>
+          <label for="doctorFilter">Doctor / specialty</label><select id="doctorFilter"><option value="">Any specialty</option></select>
+          <label for="serviceFilter">Healthcare service</label><select id="serviceFilter"><option value="">All services</option><option value="checkup">General check-up</option><option value="vaccination">Vaccination</option><option value="anti-rabies">Anti-rabies</option><option value="dialysis">Dialysis</option><option value="cancer">Cancer care</option><option value="medicine">Medicines</option><option value="laboratory">Laboratory</option><option value="emergency">Emergency</option></select>
+          <label for="availabilityFilter">Availability</label><select id="availabilityFilter"><option value="">Any status</option><option value="confirmed">Listed as available</option><option value="free">Free services listed</option></select>
+          <label for="scheduleFilter">Operating hours</label><select id="scheduleFilter"><option value="">Any schedule</option><option value="h24">Open 24 hours</option><option value="posted">Posted schedule</option></select>
+          <div class="filter-actions"><button class="btn btn-primary btn-full" id="applyFilters" type="button">Apply filters</button><button class="reset-btn" id="resetFilters" type="button">Reset all</button></div>
+        </aside>
+        <div class="results-area">
+          <div class="results-top"><div><p class="section-kicker">LOCAL DIRECTORY</p><h3 id="resultsTitle">Healthcare facilities</h3><p id="resultsMessage" aria-live="polite">Browse facilities or search a place above.</p></div><span class="result-count" id="resultCount">— places</span></div>
+          <div id="resultsContainer" class="results-grid"></div>
+          <div class="empty-state" id="emptyState" hidden><span class="empty-symbol">⌕</span><h3>No matching facilities</h3><p>Try another municipality, specialty, or filter.</p><button id="emptyReset" class="btn btn-outline" type="button">Clear filters</button></div>
+          <p class="data-note"><span aria-hidden="true">ⓘ</span> Directory details are a starting point, not a live hospital feed. Verify addresses, schedules, prices, and availability before visiting.</p>
+        </div>
+      </div>
+      <div class="facility-details" id="facilityDetails" hidden aria-live="polite">
+        <div class="details-head"><div><p class="section-kicker">FACILITY PROFILE</p><h2 id="detailTitle">Facility name</h2><p id="detailLocation"></p></div><button class="icon-close" id="closeDetailsBtn" type="button" aria-label="Close facility details">×</button></div>
+        <div class="detail-tags" id="detailTags"></div>
+        <div class="details-grid">
+          <article class="detail-box"><span class="detail-icon">＋</span><div><small>Doctors / specialties</small><strong id="detailDoctor">Call to confirm</strong></div></article>
+          <article class="detail-box"><span class="detail-icon">▤</span><div><small>Medicines</small><strong id="detailMedicine">Call to confirm</strong></div></article>
+          <article class="detail-box"><span class="detail-icon">♡</span><div><small>Vaccination</small><strong id="detailVaccination">Call to confirm</strong></div></article>
+          <article class="detail-box"><span class="detail-icon">◷</span><div><small>Operating schedule</small><strong id="detailSchedule">Call to confirm</strong></div></article>
+          <article class="detail-box"><span class="detail-icon">₱</span><div><small>Consultation / service fees</small><strong id="detailPrice">Contact facility for current prices</strong></div></article>
+          <article class="detail-box"><span class="detail-icon">♡</span><div><small>Free healthcare offers</small><strong id="detailFree">No verified offer listed</strong></div></article>
+        </div>
+        <div class="detail-footer"><div><small>Contact number</small><strong id="detailPhone">Not listed — verify locally</strong></div><a id="callFacility" class="btn btn-primary" href="#" hidden>Call facility</a></div>
+        <p class="medical-disclaimer">For emergencies, contact local emergency services. This directory is informational and does not replace professional medical advice.</p>
+      </div>
+    </section>
+
+    <section class="section services-section" id="services">
+      <div class="section-heading"><p class="section-kicker">QUICK ACCESS</p><h2 data-i18n="servicesTitle">What do you need today?</h2><p>Choose a service to find facilities that list it. Availability must be confirmed directly.</p></div>
+      <div class="service-grid">
+        <button class="service-card" data-service="checkup"><span class="service-number">01</span><span class="service-icon">＋</span><strong>General check-up</strong><small>Doctor consultation</small><span class="service-arrow">↗</span></button>
+        <button class="service-card" data-service="vaccination"><span class="service-number">02</span><span class="service-icon">♡</span><strong>Vaccination</strong><small>Routine vaccines</small><span class="service-arrow">↗</span></button>
+        <button class="service-card" data-service="anti-rabies"><span class="service-number">03</span><span class="service-icon">✚</span><strong>Anti-rabies</strong><small>Animal bite services</small><span class="service-arrow">↗</span></button>
+        <button class="service-card" data-service="dialysis"><span class="service-number">04</span><span class="service-icon">◉</span><strong>Dialysis</strong><small>Kidney treatment</small><span class="service-arrow">↗</span></button>
+        <button class="service-card" data-service="cancer"><span class="service-number">05</span><span class="service-icon">✳</span><strong>Cancer care</strong><small>Cancer-related services</small><span class="service-arrow">↗</span></button>
+        <button class="service-card" data-service="medicine"><span class="service-number">06</span><span class="service-icon">▤</span><strong>Medicines</strong><small>Medicine availability</small><span class="service-arrow">↗</span></button>
+        <button class="service-card" data-service="laboratory"><span class="service-number">07</span><span class="service-icon">⌬</span><strong>Laboratory</strong><small>Tests & diagnostics</small><span class="service-arrow">↗</span></button>
+        <button class="service-card" data-service="emergency"><span class="service-number">08</span><span class="service-icon">!</span><strong>Emergency</strong><small>Urgent healthcare</small><span class="service-arrow">↗</span></button>
+      </div>
+      <div class="service-panel" id="servicePanel" hidden><div class="panel-head"><div><p class="section-kicker">SERVICE RESULTS</p><h3 id="panelTitle">Service</h3><p id="panelCount" aria-live="polite"></p></div><button class="icon-close" id="panelClose" type="button" aria-label="Close service results">×</button></div><div id="panelList" class="panel-list"></div></div>
+    </section>
+
+    <section class="program-section" id="programs">
+      <div class="section program-layout">
+        <div class="program-intro"><p class="section-kicker light-kicker">HEALTH IN YOUR BARANGAY</p><h2>Community care<br><em>comes to you.</em></h2><p>Look out for free check-ups, vaccination drives, medical missions, and local health screenings.</p><a href="#contact" class="text-link">How to share a program <span>→</span></a></div>
+        <div class="program-content"><div class="program-top"><div><p class="section-kicker light-kicker">COMMUNITY PROGRAMS</p><h3>Upcoming health activities</h3></div><span class="calendar-mark">▦</span></div><div id="programList" class="program-list"></div><p class="program-note">No event dates are treated as confirmed unless supplied by an official local health office or organizer.</p></div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="about-art"><div class="about-cross">＋</div><div class="about-circle circle-a"></div><div class="about-circle circle-b"></div><span class="about-caption">CARE · COMMUNITY · CONNECTION</span></div>
+      <div class="about-copy"><p class="section-kicker">ABOUT HEALTH FINDER</p><h2>Health information should be <em>easy to find.</em></h2><p>Health Finder is a community-focused directory designed to help people discover healthcare facilities, compare service information, prepare for visits, and learn about free community health programs.</p><div class="about-points"><div><span>01</span><b>Clear information</b><small>Readable details, even on small screens.</small></div><div><span>02</span><b>Plan with confidence</b><small>Know what to ask before you go.</small></div><div><span>03</span><b>Community-first</b><small>Make local programs easier to discover.</small></div></div></div>
+    </section>
+
+    <section class="contact-band" id="contact"><div><p class="section-kicker light-kicker">HELP IMPROVE THIS DIRECTORY</p><h2>Have a health program or facility update?</h2><p>Information should be checked with the facility or local health office before it is published as confirmed.</p></div><a class="btn btn-light" href="mailto:healthfinder@example.com?subject=Health%20Finder%20information%20update">Suggest an update <span>→</span></a></section>
+  </main>
+  <footer class="site-footer"><div class="footer-brand"><span class="brand-mark"><svg viewBox="0 0 40 40"><path d="M16 5h8v11h11v8H24v11h-8V24H5v-8h11z" fill="currentColor"/></svg></span><span><strong>Health Finder</strong><small>Community care, closer</small></span></div><p>Healthcare information for your community.</p><div class="footer-bottom"><span>© <span id="year"></span> Health Finder · Student project</span><span>Always confirm details with the healthcare provider.</span></div></footer>
+  <script src="/script.js" defer></script>
+</body>
+</html>
