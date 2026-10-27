@@ -62,8 +62,16 @@ function matches(f){
 }
 function statusPill(text,caution=true){return '<span class="meta-pill '+(caution?'caution':'')+'">'+esc(text)+'</span>';}
 function renderResults(){
- const list=facilities.filter(matches);
+ const hasSearch=Boolean(currentQuery.trim()||doctorFilter.value||serviceFilter.value||availabilityFilter.value||scheduleFilter.value||selectedService);
  resultsContainer.innerHTML="";
+ if(!hasSearch){
+  resultsContainer.hidden=true;emptyState.hidden=true;
+  $("resultCount").textContent="Search first";
+  $("resultsTitle").textContent="Search to see facilities";
+  $("resultsMessage").textContent="Enter a municipality, barangay, or facility name above to view matching results.";
+  return;
+ }
+ const list=facilities.filter(matches);
  $("resultCount").textContent=list.length+" "+(list.length===1?"place":"places");
  $("resultsMessage").textContent=currentQuery?'Results matching “'+currentQuery+'”':(selectedService?'Facilities listing '+serviceNames[selectedService]:'Browse facilities or search a place above.');
  $("resultsTitle").textContent=selectedService?serviceNames[selectedService]:"Healthcare facilities";
