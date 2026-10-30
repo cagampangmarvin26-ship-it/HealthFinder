@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b2545">
+  <meta name="theme-color" content="#cde8f9">
   <meta name="description" content="Find healthcare facilities, services, fees, free healthcare offers, and barangay health programs in Davao del Sur.">
   <title>Health Finder — Community Healthcare, Made Easier</title>
   <link rel="stylesheet" href="/style.css">
@@ -16,7 +16,7 @@
         <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M16 5h8v11h11v8H24v11h-8V24H5v-8h11z" fill="currentColor"/></svg></span>
         <span><strong>Health Finder</strong><small>Community care, closer</small></span>
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation"><span></span><span></span><span></span></button>
       <nav id="navLinks" class="nav-links" aria-label="Main navigation">
         <a href="#home" class="active">Home</a><a href="#find">Find care</a><a href="#services">Services</a><a href="#programs">Health programs</a><a href="#philhealth">PhilHealth</a><a href="#about">About</a>
         <button class="lang-toggle" id="languageBtn" type="button" aria-label="Switch language">Filipino</button>
@@ -37,13 +37,7 @@
           <button type="submit" class="btn btn-primary"><span data-i18n="searchButton">Find care</span><span aria-hidden="true"> →</span></button>
         </form>
       </div>
-    </section>
-
-    <!-- Feature strip removed to keep the homepage uncluttered. -->
-      <div><span class="trust-icon">⌖</span><span><b>Find facilities</b><small>Hospitals, clinics & RHUs</small></span></div>
-      <div><span class="trust-icon">＋</span><span><b>Check services</b><small>Availability & schedules</small></span></div>
-      <div><span class="trust-icon">₱</span><span><b>Plan ahead</b><small>Fees & free services</small></span></div>
-      <div><span class="trust-icon">♡</span><span><b>Community care</b><small>Programs near you</small></span></div>
+      <a class="scroll-cue" href="#find" aria-label="Scroll to find care"><span></span></a>
     </section>
 
     <section class="section find-section" id="find">
@@ -107,32 +101,33 @@
     <section class="section services-section" id="services">
       <div class="section-heading"><p class="section-kicker">QUICK ACCESS</p><h2 data-i18n="servicesTitle">What do you need today?</h2><p>Choose a service to find facilities that list it. Availability must be confirmed directly.</p></div>
       <div class="service-grid">
-        <button class="service-card" data-service="checkup"><span class="service-number">01</span><span class="service-icon">＋</span><strong>General check-up</strong><small>Doctor consultation</small><span class="service-arrow">↗</span></button>
-        <button class="service-card" data-service="vaccination"><span class="service-number">02</span><span class="service-icon">♡</span><strong>Vaccination</strong><small>Routine vaccines</small><span class="service-arrow">↗</span></button>
-        <button class="service-card" data-service="anti-rabies"><span class="service-number">03</span><span class="service-icon">✚</span><strong>Anti-rabies</strong><small>Animal bite services</small><span class="service-arrow">↗</span></button>
-        <button class="service-card" data-service="dialysis"><span class="service-number">04</span><span class="service-icon">◉</span><strong>Dialysis</strong><small>Kidney treatment</small><span class="service-arrow">↗</span></button>
-        <button class="service-card" data-service="cancer"><span class="service-number">05</span><span class="service-icon">✳</span><strong>Cancer care</strong><small>Cancer-related services</small><span class="service-arrow">↗</span></button>
-        <button class="service-card" data-service="medicine"><span class="service-number">06</span><span class="service-icon">▤</span><strong>Medicines</strong><small>Medicine availability</small><span class="service-arrow">↗</span></button>
-        <button class="service-card" data-service="laboratory"><span class="service-number">07</span><span class="service-icon">⌬</span><strong>Laboratory</strong><small>Tests & diagnostics</small><span class="service-arrow">↗</span></button>
-        <button class="service-card" data-service="emergency"><span class="service-number">08</span><span class="service-icon">!</span><strong>Emergency</strong><small>Urgent healthcare</small><span class="service-arrow">↗</span></button>
+        <button type="button" class="service-card" data-service="checkup"><span class="service-number">01</span><span class="service-icon">＋</span><strong>General check-up</strong><small>Doctor consultation</small><span class="service-arrow">↗</span></button>
+        <button type="button" class="service-card" data-service="vaccination"><span class="service-number">02</span><span class="service-icon">♡</span><strong>Vaccination</strong><small>Routine vaccines</small><span class="service-arrow">↗</span></button>
+        <button type="button" class="service-card" data-service="anti-rabies"><span class="service-number">03</span><span class="service-icon">✚</span><strong>Anti-rabies</strong><small>Animal bite services</small><span class="service-arrow">↗</span></button>
+        <button type="button" class="service-card" data-service="dialysis"><span class="service-number">04</span><span class="service-icon">◉</span><strong>Dialysis</strong><small>Kidney treatment</small><span class="service-arrow">↗</span></button>
+        <button type="button" class="service-card" data-service="cancer"><span class="service-number">05</span><span class="service-icon">✳</span><strong>Cancer care</strong><small>Cancer-related services</small><span class="service-arrow">↗</span></button>
+        <button type="button" class="service-card" data-service="medicine"><span class="service-number">06</span><span class="service-icon">▤</span><strong>Medicines</strong><small>Medicine availability</small><span class="service-arrow">↗</span></button>
+        <button type="button" class="service-card" data-service="laboratory"><span class="service-number">07</span><span class="service-icon">⌬</span><strong>Laboratory</strong><small>Tests & diagnostics</small><span class="service-arrow">↗</span></button>
+        <button type="button" class="service-card" data-service="emergency"><span class="service-number">08</span><span class="service-icon">!</span><strong>Emergency</strong><small>Urgent healthcare</small><span class="service-arrow">↗</span></button>
       </div>
       <div class="service-panel" id="servicePanel" hidden><div class="panel-head"><div><p class="section-kicker">SERVICE RESULTS</p><h3 id="panelTitle">Service</h3><p id="panelCount" aria-live="polite"></p></div><button class="icon-close" id="panelClose" type="button" aria-label="Close service results">×</button></div><div id="panelList" class="panel-list"></div></div>
     </section>
 
     <section class="program-section" id="programs">
       <div class="section program-layout">
-        <div class="program-intro"><p class="section-kicker light-kicker">HEALTH IN YOUR BARANGAY</p><h2>Community care<br><em>comes to you.</em></h2><p>Look out for free check-ups, vaccination drives, medical missions, and local health screenings.</p><a href="#contact" class="text-link">How to share a program <span>→</span></a></div>
-        <div class="program-content"><div class="program-top"><div><p class="section-kicker light-kicker">COMMUNITY PROGRAMS</p><h3>Upcoming health activities</h3></div><span class="calendar-mark">▦</span></div><div id="programList" class="program-list"></div><p class="program-note">No event dates are treated as confirmed unless supplied by an official local health office or organizer.</p></div>
+        <div class="program-intro"><p class="section-kicker">HEALTH IN YOUR BARANGAY</p><h2>Community care<br><em>comes to you.</em></h2><p>Look out for free check-ups, vaccination drives, medical missions, and local health screenings.</p><a href="#contact" class="text-link">How to share a program <span>→</span></a></div>
+        <div class="program-content"><div class="program-top"><div><p class="section-kicker">COMMUNITY PROGRAMS</p><h3>Upcoming health activities</h3></div><span class="calendar-mark">▦</span></div><div id="programList" class="program-list"></div><p class="program-note">No event dates are treated as confirmed unless supplied by an official local health office or organizer.</p></div>
       </div>
     </section>
 
     <section class="section about-section" id="about">
-      <figure class="about-art about-photo"><img src="https://news-ph.churchofjesuschrist.org/media/orig/Mormon_Newsroom_Philippines-Medical_Mission-.jpg" alt="A volunteer nurse checks a community member's blood pressure during a Davao medical mission" loading="lazy"><figcaption>Real community health outreach in Davao · <a href="https://news-ph.churchofjesuschrist.org/article/medical-mission-davao" target="_blank" rel="noopener noreferrer">Photo source</a></figcaption></figure>
+      <figure class="about-art"><img src="https://news-ph.churchofjesuschrist.org/media/orig/Mormon_Newsroom_Philippines-Medical_Mission-.jpg" alt="A volunteer nurse checks a community member's blood pressure during a Davao medical mission" loading="lazy"><figcaption>Real community health outreach in Davao · <a href="https://news-ph.churchofjesuschrist.org/article/medical-mission-davao" target="_blank" rel="noopener noreferrer">Photo source</a></figcaption></figure>
       <div class="about-copy"><p class="section-kicker">ABOUT HEALTH FINDER</p><h2>Health information should be <em>easy to find.</em></h2><p>Health Finder is a community-focused directory designed to help people discover healthcare facilities, compare service information, prepare for visits, and learn about free community health programs.</p><div class="about-points"><div><span>01</span><b>Clear information</b><small>Readable details, even on small screens.</small></div><div><span>02</span><b>Plan with confidence</b><small>Know what to ask before you go.</small></div><div><span>03</span><b>Community-first</b><small>Make local programs easier to discover.</small></div></div></div>
     </section>
 
-    <section class="contact-band" id="contact"><div><p class="section-kicker light-kicker">HELP IMPROVE THIS DIRECTORY</p><h2>Have a health program or facility update?</h2><p>Information should be checked with the facility or local health office before it is published as confirmed.</p></div><a class="btn btn-light" href="mailto:healthfinder@example.com?subject=Health%20Finder%20information%20update">Suggest an update <span>→</span></a></section>
+    <section class="contact-band" id="contact"><div><p class="section-kicker">HELP IMPROVE THIS DIRECTORY</p><h2>Have a health program or facility update?</h2><p>Information should be checked with the facility or local health office before it is published as confirmed.</p></div><a class="btn btn-light" href="mailto:healthfinder@example.com?subject=Health%20Finder%20information%20update">Suggest an update <span>→</span></a></section>
   </main>
+
   <footer class="site-footer"><div class="footer-brand"><span class="brand-mark"><svg viewBox="0 0 40 40"><path d="M16 5h8v11h11v8H24v11h-8V24H5v-8h11z" fill="currentColor"/></svg></span><span><strong>Health Finder</strong><small>Community care, closer</small></span></div><p>Healthcare information for your community.</p><div class="footer-bottom"><span>© <span id="year"></span> Health Finder · Student project</span><span>Always confirm details with the healthcare provider.</span></div></footer>
   <script src="/script.js" defer></script>
 </body>
