@@ -48,6 +48,29 @@
  .facility-photo{height:125px;width:calc(100% + 26px);margin:-13px -13px 12px}
  .facility-photo-placeholder{height:105px;margin:-13px -13px 12px}
 }
+/* Minimal, centered search-first hero */
+.hero{background:linear-gradient(180deg,#f5faff 0%,#ffffff 100%)!important;padding:clamp(58px,8vw,104px) 24px clamp(64px,8vw,100px)!important;min-height:0!important}
+.hero-glow,.hero-bottom,.hero-visual,.hero-copy .eyebrow,.hero-note,.trust-strip{display:none!important}
+.hero-grid{display:block!important;min-height:0!important;max-width:none!important}
+.hero-content-centered{width:min(100%,850px);margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero-kicker{margin:0 0 16px;color:#4a8fbe;font-size:11px;font-weight:800;letter-spacing:1.5px}
+.hero-content-centered h1{margin:0;color:#245b8f;font:800 clamp(38px,5.3vw,64px)/1.1 Manrope,sans-serif;letter-spacing:-2px}
+.hero-content-centered h1 em{font-style:normal;color:#3687bd}
+.hero-content-centered .hero-lede{max-width:620px;margin:18px auto 28px;color:#667f95;font-size:clamp(14px,1.7vw,17px);line-height:1.7}
+.hero-content-centered .hero-search{width:min(100%,720px);margin:0 auto;background:#fff;border:1px solid #d9e8f4;border-radius:16px;padding:8px;display:flex;gap:10px;box-shadow:0 12px 34px rgba(44,105,153,.09)}
+.hero-content-centered .hero-search input{flex:1;min-width:0;border:0;background:transparent;padding:13px 10px;outline:none}
+.hero-content-centered .hero-search button{flex:none}
+@media(max-width:760px){
+ .hero{padding:54px 20px 62px!important}
+ .hero-content-centered{width:100%}
+ .hero-content-centered h1{font-size:clamp(35px,9vw,48px);letter-spacing:-1.4px}
+ .hero-content-centered .hero-lede{font-size:14px;margin:14px auto 22px;max-width:440px}
+ .hero-content-centered .hero-search{padding:6px;gap:4px;border-radius:13px}
+ .hero-content-centered .hero-search input{font-size:13px;padding:11px 7px}
+ .hero-content-centered .hero-search button{padding:11px 13px;font-size:13px}
+}
+.facility-card .facility-meta{align-items:flex-start}
+.facility-card .facility-meta .meta-pill{white-space:normal;line-height:1.4}
 @media(prefers-reduced-motion:reduce){.reveal-on-scroll{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 @media(max-width:380px){.hero h1{font-size:37px}.hero-search .btn{padding:10px 9px}.hero-search input{font-size:11px}.hero-bottom{font-size:7px}.results-grid{grid-template-columns:1fr}.facility-location{min-height:0}.facility-card-footer{flex-direction:row;align-items:center}.view-btn{width:auto}.details-grid{grid-template-columns:1fr}.trust-strip>div{padding:0}.trust-strip small{font-size:8px}}
 /* Health Finder refresh: calm light-blue palette, real community-health photos, and shorter search-first results */
