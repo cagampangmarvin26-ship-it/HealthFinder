@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Admin sign in — Health Finder</title>
+<style>
+:root{--navy:#245b8f;--blue:#2878b6;--sky:#75c7ef;--ink:#253f55;--muted:#5d7a90;--line:#dceaf3;--soft:#f5faff}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(145deg,#f5faff,#eaf6ff);font:15px/1.5 "DM Sans",Arial,sans-serif;color:var(--ink)}
+main{width:min(100%,420px);background:#fff;border:1px solid var(--line);border-radius:20px;padding:36px;box-shadow:0 18px 55px rgba(43,100,145,.12)}
+.mark{width:48px;height:48px;border-radius:14px;background:#eaf6ff;color:var(--blue);display:grid;place-items:center;font-size:27px;font-weight:800}
+h1{font-size:25px;line-height:1.2;color:var(--navy);margin:20px 0 8px}p{color:var(--muted);margin:0 0 24px}
+label{display:block;font-weight:700;font-size:13px;margin:14px 0 6px}input{width:100%;height:48px;border:1px solid var(--line);border-radius:10px;padding:0 13px;font:inherit;color:var(--ink)}
+button{width:100%;height:48px;border:0;border-radius:10px;background:var(--blue);color:white;font-weight:800;font:inherit;margin-top:14px;cursor:pointer}button:disabled{opacity:.55;cursor:wait}.secondary{background:#eef8ff;color:var(--navy)}.msg{min-height:22px;font-size:13px;margin-top:14px}.err{color:#b42318}.hint{font-size:12px;margin-top:20px}
+[hidden]{display:none!important}
+</style></head><body><main>
+<div class="mark">+</div><h1 id="heading">Super Admin sign in</h1><p id="sub">Use your invited email address. We'll send you a one-time code—no password needed.</p>
+<form id="form"><div id="emailRow"><label for="email">Email address</label><input id="email" type="email" autocomplete="username webauthn" required placeholder="name@example.com"></div>
+<div id="codeRow" hidden><label for="code">6-digit verification code</label><input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="Enter code"></div>
+<button id="submit" type="submit">Send verification code</button><button id="back" class="secondary" type="button" hidden>Use a different email</button></form>
+<div id="passkey" hidden><p>For quicker sign-in next time, you can add a passkey to this device.</p><button id="add" type="button">Add a passkey</button><button id="skip" class="secondary" type="button">Not now</button></div>
+<div id="msg" class="msg" role="status" aria-live="polite"></div><p class="hint">Health Finder · Authorized administrators only</p>
+</main><script>
+(function(){
+const A=window.hatchable&&window.hatchable.auth,form=document.getElementById('form'),email=document.getElementById('email'),code=document.getElementById('code'),emailRow=document.getElementById('emailRow'),codeRow=document.getElementById('codeRow'),submit=document.getElementById('submit'),back=document.getElementById('back'),msg=document.getElementById('msg'),passkey=document.getElementById('passkey');let step='email',hasPasskey=false;
+function say(t,e){msg.textContent=t||'';msg.className='msg'+(e?' err':'')}
+function next(){const n=new URLSearchParams(location.search).get('next')||'/admin';location.replace(n.startsWith('/')&&!n.startsWith('//')?n:'/admin')}
+if(!A){say('Sign-in is unavailable. Please refresh.',true);submit.disabled=true;return}
+A.getSession().then(s=>{if(s&&s.user)next()}).catch(()=>{});
+back.onclick=()=>{step='email';emailRow.hidden=false;codeRow.hidden=true;back.hidden=true;submit.textContent='Send verification code';document.getElementById('sub').textContent="Use your invited email address. We'll send you a one-time code—no password needed.";say('')};
+form.onsubmit=async e=>{e.preventDefault();submit.disabled=true;try{if(step==='email'){const r=await A.startLogin({email:email.value.trim()});hasPasskey=!!r.has_passkey;if(hasPasskey&&A.supportsPasskeys()){try{await A.signInWithPasskey({email:email.value.trim()});next();return}catch(_){}}step='code';emailRow.hidden=true;codeRow.hidden=false;back.hidden=false;submit.textContent='Verify and sign in';document.getElementById('sub').textContent='Enter the code sent to '+email.value.trim();say('Verification code sent.')}else{const r=await A.verifyCode({email:email.value.trim(),code:code.value.trim()});if(!r.user)throw new Error('The code could not be verified.');const boot=await fetch('/api/account/bootstrap',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});const bootData=await boot.json();if(!boot.ok)throw new Error(bootData.error||'This account is not authorized for the admin portal.');form.hidden=true;document.getElementById('heading').textContent='You’re signed in';document.getElementById('sub').textContent='Add a passkey for faster sign-in next time, or continue to your dashboard.';if(!hasPasskey&&A.supportsPasskeys()&&!localStorage.getItem('hf_passkey_declined'))passkey.hidden=false;else next()}}catch(err){say(err.message||'Unable to sign in. Check your email and code.',true)}finally{submit.disabled=false}};
+document.getElementById('add').onclick=async()=>{try{await A.registerPasskey();next()}catch(e){say(e.message||'Could not add passkey.',true)}};
+document.getElementById('skip').onclick=()=>{localStorage.setItem('hf_passkey_declined','1');next()};
+})();
+</script></body></html>
