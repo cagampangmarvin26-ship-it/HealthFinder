@@ -185,7 +185,40 @@ if("IntersectionObserver" in window){
 }
 
 /* ---------- Scroll float-in (replays every time it re-enters the screen) ---------- */
-fillDoctors();renderResults();
+async function applySavedSiteDesign(){
+ try{
+  const response=await fetch("/api/site-design");
+  if(!response.ok)return;
+  const data=await response.json();
+  const design=data.design||{};
+  Object.entries(design.elements||{}).forEach(([selector,item])=>{
+   let el;try{el=document.querySelector(selector);}catch(_){return;}
+   if(!el)return;
+   if(typeof item.text==="string"){
+    const direct=[...el.childNodes].find(n=>n.nodeType===3&&n.nodeValue.trim());
+    if(direct)direct.nodeValue=item.text;else el.insertBefore(document.createTextNode(item.text),el.firstChild);
+   }
+   if(item.color)el.style.color=item.color;
+   if(item.background)el.style.backgroundColor=item.background;
+  });
+  document.querySelectorAll(".site-custom-buttons").forEach(el=>el.remove());
+  const grouped={};
+  (design.customButtons||[]).forEach(b=>{(grouped[b.section]||=[]).push(b);});
+  Object.entries(grouped).forEach(([sectionId,buttons])=>{
+   const section=$(sectionId);if(!section)return;
+   const wrap=document.createElement("div");wrap.className="site-custom-buttons";
+   wrap.style.cssText="display:flex;flex-wrap:wrap;gap:10px;margin:18px 0";
+   buttons.forEach(b=>{
+    const a=document.createElement("a");a.className="btn btn-primary";a.textContent=b.label;a.href=b.url;
+    a.dataset.customId=b.id;a.style.cssText="display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:9px;text-decoration:none";
+    if(/^https:\/\//i.test(b.url)){a.target="_blank";a.rel="noopener noreferrer";}
+    wrap.appendChild(a);
+   });
+   section.appendChild(wrap);
+  });
+ }catch(error){console.warn("Website design settings could not be loaded.",error);}
+}
+fillDoctors();renderResults();applySavedSiteDesign();
 const revealTargets=document.querySelectorAll(".hero-content-centered > *,.section-heading,.filter-panel,.results-top,.philhealth-card,.service-card,.program-intro,.program-content,.program-item,.about-art,.about-copy,.about-points > div,.contact-band > div,.contact-band > a");
 revealTargets.forEach(el=>el.classList.add("reveal-on-scroll"));
 if("IntersectionObserver" in window&&!reduceMotion){
